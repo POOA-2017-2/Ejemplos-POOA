@@ -14,6 +14,8 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 public class VISTA1 extends JFrame {
 
@@ -45,11 +47,14 @@ public class VISTA1 extends JFrame {
 		setTitle("primera interfaz");
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 128, 128));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(10, 10, 10, 9));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 2, 0, 0));
 		
 		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setToolTipText("CLICK");
+		btnNewButton.setBackground(SystemColor.windowText);
+		btnNewButton.setForeground(UIManager.getColor("Button.select"));
 		
 		/////////////////////////////////
 		btnNewButton.addActionListener(
