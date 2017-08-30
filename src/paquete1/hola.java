@@ -16,6 +16,8 @@ public class hola {
 		System.out.println("hOLA 2...");
 		System.out.println("hOLA 2...");
 		System.out.println("hOLA 2...");
+		System.out.println("hOLA 2...");
+		System.out.println("hOLA 2...");
 	}
 
 }
