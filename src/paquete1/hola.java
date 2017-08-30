@@ -10,9 +10,10 @@ public class hola {
 		// TODO Auto-generated method stub
 		/*
 		 * DADSASDADASDASDASD
-		 * 
+		 * mIGUEL flores
 		 * */
 		System.out.println("Hola!...");
+		System.out.println("hOLA 2...");
 		System.out.println("hOLA 2...");
 		System.out.println("hOLA 2...");
 	}
