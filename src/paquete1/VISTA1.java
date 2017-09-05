@@ -17,6 +17,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import java.awt.SystemColor;
 import javax.swing.JSlider;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class VISTA1 extends JFrame {
 
