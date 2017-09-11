@@ -1,6 +1,5 @@
-package paquete1;
+package interfaces;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -57,6 +56,8 @@ public class Temperatura extends JFrame {
 		pnlFahrenheit.setLayout(new BoxLayout(pnlFahrenheit, BoxLayout.Y_AXIS));
 		
 		final JSlider Fahrenheit = new JSlider();
+		Fahrenheit.setForeground(Color.BLACK);
+		Fahrenheit.setBackground(Color.RED);
 		final JSlider Centigrados = new JSlider();
 		Centigrados.setValue(10);
 		txtFahrenheit = new JTextField();
@@ -105,7 +106,7 @@ public class Temperatura extends JFrame {
 				double resultado=(Fahrenheit.getValue()-32)/1.8;
 				Centigrados.setValue((int)resultado);
 				txtFahrenheit.setText(String.valueOf(Fahrenheit.getValue()));
-				txtCentigrados.setText(String.valueOf(resultado));
+				txtCentigrados.setText(String.valueOf(resultado).format("%.2f", resultado));
 			}
 		});
 	}

@@ -1,4 +1,4 @@
-package paquete1;
+package interfaces;
 
 import java.awt.Color;
 import java.awt.Graphics;
