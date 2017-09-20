@@ -7,6 +7,8 @@ public class Persona implements Serializable{
 	private String nombre;
 	private  int edad;
 	private Genero genero;
+	private String telefono;
+	private String correo;
 	
 	
 	public Persona(String nombre, int edad, Genero genero) {
@@ -14,6 +16,35 @@ public class Persona implements Serializable{
 		this.nombre = nombre;
 		this.edad = edad;
 		this.genero = genero;
+	}
+
+	
+	public Persona(String nombre, int edad, Genero genero, String telefono, String correo) {
+		super();
+		this.nombre = nombre;
+		this.edad = edad;
+		this.genero = genero;
+		this.telefono = telefono;
+		this.correo = correo;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+
+	public String getCorreo() {
+		return correo;
+	}
+
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 
 
