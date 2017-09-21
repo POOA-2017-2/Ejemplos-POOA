@@ -17,9 +17,13 @@ public class PanelFiguras extends JPanel {
 	
 	public void addFigura(Figura f){
 		listaFiguras.add(f);
+		Thread t=new Thread(f);
+		t.start();
+		repaint();
 	}
 	
-	public void paint(Graphics g){
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
 		for(Figura f:listaFiguras){
 			g.setColor(f.getColor());
 			String tipoFigura=f.getShape();

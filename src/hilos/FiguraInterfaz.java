@@ -56,8 +56,8 @@ public class FiguraInterfaz extends JFrame {
 		JLabel lblFigura = new JLabel("Figura:");
 		pnlDatos.add(lblFigura);
 		
-		final JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Cuadrado", "Circulo", "Triangulo"}));
+		final JComboBox <String> comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Cuadrado", "Circulo", "Triangulo"}));
 		pnlDatos.add(comboBox);
 		
 		
@@ -105,8 +105,8 @@ public class FiguraInterfaz extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Random rnd=new Random();
 				int size=(Integer) spinner.getValue();
-				int x=(int) (rnd.nextDouble() * (550-size) + 0);
-				int y=(int) (rnd.nextDouble() * (300-size) + 0);
+				int x=(int) (rnd.nextDouble() * (pnlFiguras.getWidth()-size) + 0);
+				int y=(int) (rnd.nextDouble() * (pnlFiguras.getHeight()-size) + 0);
 				int dx=(int) (rnd.nextDouble() * (15-size) + 1);
 				int dy=(int) (rnd.nextDouble() * (15-size) + 1);
 				String forma=(String)comboBox.getSelectedItem();
@@ -114,7 +114,6 @@ public class FiguraInterfaz extends JFrame {
 				Figura f=new Figura(x, y, dx, dy, c, size, forma);
 				pnlFiguras.addFigura(f);
 				pnlFiguras.repaint();
-				pnlFiguras.updateUI();
 				
 			}
 		});

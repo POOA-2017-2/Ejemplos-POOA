@@ -2,7 +2,7 @@ package hilos;
 
 import java.awt.Color;
 
-public class Figura {
+public class Figura implements Runnable{
 	private int x;
 	private int y;
 	private int dx;
@@ -84,6 +84,20 @@ public class Figura {
 
 	public void setShape(String shape) {
 		this.shape = shape;
+	}
+
+	@Override
+	public void run() {
+		while(true){
+			mover();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 }
