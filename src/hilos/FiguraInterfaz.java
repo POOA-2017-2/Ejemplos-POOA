@@ -17,11 +17,14 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.util.Random;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FiguraInterfaz extends JFrame {
 
 	private JPanel contentPane;
 	private Color c;
+	
 
 	/**
 	 * Launch the application.
@@ -56,7 +59,7 @@ public class FiguraInterfaz extends JFrame {
 		JLabel lblFigura = new JLabel("Figura:");
 		pnlDatos.add(lblFigura);
 		
-		final JComboBox <String> comboBox = new JComboBox<String>();
+		final JComboBox<String>comboBox = new JComboBox<String>();
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Cuadrado", "Circulo", "Triangulo"}));
 		pnlDatos.add(comboBox);
 		
@@ -107,16 +110,15 @@ public class FiguraInterfaz extends JFrame {
 				int size=(Integer) spinner.getValue();
 				int x=(int) (rnd.nextDouble() * (pnlFiguras.getWidth()-size) + 0);
 				int y=(int) (rnd.nextDouble() * (pnlFiguras.getHeight()-size) + 0);
+
 				int dx=(int) (rnd.nextDouble() * (15-size) + 1);
 				int dy=(int) (rnd.nextDouble() * (15-size) + 1);
 				String forma=(String)comboBox.getSelectedItem();
 				
 				Figura f=new Figura(x, y, dx, dy, c, size, forma);
 				pnlFiguras.addFigura(f);
-				pnlFiguras.repaint();
-				
 			}
 		});
 	}
-
+	
 }

@@ -17,13 +17,24 @@ public class PanelFiguras extends JPanel {
 	
 	public void addFigura(Figura f){
 		listaFiguras.add(f);
-		Thread t=new Thread(f);
-		t.start();
 		repaint();
 	}
 	
+	/*
+	 * Método similar a paint,  es el método recomendado para dibujar 
+	 * en los componentes JAVA de acuerdo a la documentación para no
+	 * generar problemas con las interfaces.
+	 * 
+	 * */
 	public void paintComponent(Graphics g){
-		super.paintComponent(g);
+		/*
+		 * Primero hay que llamar al metodo paintComponent del padre 
+		 * de la clase para evitar problemas con los graficos de JAVA.
+		 * Por eso usamos la palabra reservada super. 
+		 * 
+		 **/
+		super.paintComponent(g); 
+		
 		for(Figura f:listaFiguras){
 			g.setColor(f.getColor());
 			String tipoFigura=f.getShape();
