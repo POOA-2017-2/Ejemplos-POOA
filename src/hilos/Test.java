@@ -7,15 +7,23 @@ public class Test {
 		MiPrimerHilo hilo1=new MiPrimerHilo();
 		hilo1.setName("Maria");
 		hilo1.start();
-		hilo1.setPriority(Thread.MAX_PRIORITY);
-		
+		//hilo1.setPriority(Thread.NORM_PRIORITY);
+		//hilo1.interrupt();
+		try {
+			hilo1.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		MiPrimerHilo hilo2=new MiPrimerHilo();
 		hilo2.setName("Pedro");
 		hilo2.start();
-		hilo2.setPriority(Thread.MIN_PRIORITY);
+		//hilo2.setPriority(Thread.MAX_PRIORITY);
 		
+		/*
 		MiSegundoHilo hiloRunnable=new MiSegundoHilo("Jose");
 		Thread hilo3= new Thread(hiloRunnable);
 		hilo3.start();
+		*/
 	}
 }

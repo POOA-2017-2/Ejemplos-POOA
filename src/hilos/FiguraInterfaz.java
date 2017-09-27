@@ -101,6 +101,42 @@ public class FiguraInterfaz extends JFrame {
 		pnlDatos.add(btnAgregar);
 		
 		final PanelFiguras pnlFiguras=new PanelFiguras();
+		pnlFiguras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Random rnd=new Random();
+				int size=(Integer) spinner.getValue();
+
+				int x=e.getX();
+				int y=e.getY();
+
+				int dx=(int) (rnd.nextDouble() * (15-size) + 1);
+				int dy=(int) (rnd.nextDouble() * (15-size) + 1);
+				String forma=(String)comboBox.getSelectedItem();
+				
+				Figura f=new Figura(x, y, dx, dy, c, size, forma,pnlFiguras);
+				pnlFiguras.addFigura(f);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				System.out.println("mouse dentro");
+			}
+		
+			@Override
+			public void mouseExited(MouseEvent e) {
+				System.out.println("mouse saliendo");
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println("mouse presiono boton");
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				System.out.println("mouse solto boton");
+			}
+		});
+		//Thread t=new Thread(pnlFiguras);
+		//t.start();
 		contentPane.add(pnlFiguras, BorderLayout.CENTER);
 		
 		
@@ -108,6 +144,14 @@ public class FiguraInterfaz extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Random rnd=new Random();
 				int size=(Integer) spinner.getValue();
+				/*
+				 * Numero aleatorios en un rango 
+				 * Random rnd=new Random();
+				 * n=(int)(rnd.nextDouble()*cantidad_numeros_en_el_rango + rango_Inferior);
+				 * Ejemplo Rango de 3-8 existen 6 numeros en este rango [3,4,5,6,7,8]  
+				 * n=(int)(rnd.nextDouble()*6 + 3);
+				 * 
+				 * */
 				int x=(int) (rnd.nextDouble() * (pnlFiguras.getWidth()-size) + 0);
 				int y=(int) (rnd.nextDouble() * (pnlFiguras.getHeight()-size) + 0);
 
@@ -115,7 +159,7 @@ public class FiguraInterfaz extends JFrame {
 				int dy=(int) (rnd.nextDouble() * (15-size) + 1);
 				String forma=(String)comboBox.getSelectedItem();
 				
-				Figura f=new Figura(x, y, dx, dy, c, size, forma);
+				Figura f=new Figura(x, y, dx, dy, c, size, forma,pnlFiguras);
 				pnlFiguras.addFigura(f);
 			}
 		});

@@ -1,8 +1,9 @@
 package hilos;
 
 import java.awt.Color;
+import java.awt.Component;
 
-public class Figura{
+public class Figura implements Runnable{
 	private int x;
 	private int y;
 	private int dx;
@@ -10,8 +11,9 @@ public class Figura{
 	private Color color;
 	private int size;
 	private String shape;
+	private Component componente;
 	
-	public Figura(int x, int y, int dx, int dy, Color color, int size, String shape) {
+	public Figura(int x, int y, int dx, int dy, Color color, int size, String shape, Component componente) {
 		super();
 		this.x = x;
 		this.y = y;
@@ -20,6 +22,9 @@ public class Figura{
 		this.color = color;
 		this.size = size;
 		this.shape=shape;
+		this.componente=componente;
+		Thread t=new Thread(this);
+		t.start();
 	}
 
 	public Figura() {
@@ -74,8 +79,28 @@ public class Figura{
 		this.size = size;
 	}
 	
-	public void mover(){
+	public void mover(int alto, int ancho){
 		x+=dx;
+		y+=dy;
+		if(x<=0){
+			x=0;
+			dx=-dx;
+		}
+		if(x>=(ancho-size)){
+			x=ancho-size;
+			dx=-dx;
+		}
+		
+		if(y>=(alto-size)){
+			y=alto-size;
+			dy=-dy;
+		}
+		
+		if(y<=0){
+			y=0;
+			dy=-dy;
+		}
+		
 	}
 
 	public String getShape() {
@@ -84,6 +109,22 @@ public class Figura{
 
 	public void setShape(String shape) {
 		this.shape = shape;
+	}
+
+	
+	
+	public void run() {
+		while(true){
+			mover(componente.getHeight(), componente.getWidth());
+			componente.repaint();
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 
