@@ -154,7 +154,7 @@ public class Agenda extends JFrame {
 				int index=list.getSelectedIndex();
 				Persona p=modelo.get(index);
 				txtNombre.setText(p.getNombre());
-				//JOptionPane.showMessageDialog(contentPane, modelo.get(index).toString());
+				JOptionPane.showMessageDialog(contentPane, modelo.get(index).toString());
 			}
 		});
 		scrollPane.setViewportView(list);

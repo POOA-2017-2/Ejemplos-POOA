@@ -17,8 +17,6 @@ public class Figura implements Runnable{
 		super();
 		this.x = x;
 		this.y = y;
-		this.dx = dx;
-		this.dy = dy;
 		this.color = color;
 		this.size = size;
 		this.shape=shape;
