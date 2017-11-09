@@ -1,6 +1,6 @@
 package juego.vista;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -14,7 +14,8 @@ public class Game implements Runnable{
 	private Thread t;
 	private BufferStrategy bs;
 	private Graphics g;
-	private int x=0; 
+	private Escenario escenario;
+	private Jugador jugador;
 	
 	public Game(int ancho, int alto, String titulo) {
 		super();
@@ -26,6 +27,9 @@ public class Game implements Runnable{
 	
 	public void init(){
 		ventana=new Display(ancho, alto, titulo);
+		ventana.getCanvas().setFocusable(true);
+		escenario=new Escenario();
+		jugador=new Jugador(this,10,160);
 	}
 
 	public synchronized void start(){
@@ -50,7 +54,8 @@ public class Game implements Runnable{
 	}
 	
 	public void update(){
-		x++;
+		escenario.update();
+		jugador.update();
 	}
 	
 	public void render(){
@@ -63,8 +68,8 @@ public class Game implements Runnable{
 		g=bs.getDrawGraphics();
 		g.clearRect(0, 0, ancho, alto);
 		// PINTAR ELEMENTOS
-		g.setColor(Color.red);
-		g.fillRect(x, 20, 30, 40);
+		escenario.render(g);
+		jugador.render(g);
 		// FIN DEL PINTADO
 		bs.show();
 		g.dispose();
@@ -74,7 +79,7 @@ public class Game implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		init();//<--- INICIALIZAR JUEGO
-		int fps=120;
+		int fps=60;
 		double nanoPorFrame=1000000000/fps;
 		long nuevo;
 		long pasado=System.nanoTime();
@@ -107,6 +112,42 @@ public class Game implements Runnable{
 		}
 		
 	}
+
+	
+	public Escenario getEscenario() {
+		return escenario;
+	}
+
+	public void setEscenario(Escenario escenario) {
+		this.escenario = escenario;
+	}
+
+	public int getAncho() {
+		return ancho;
+	}
+
+	public void setAncho(int ancho) {
+		this.ancho = ancho;
+	}
+
+	public int getAlto() {
+		return alto;
+	}
+
+	public void setAlto(int alto) {
+		this.alto = alto;
+	}
+
+	public Graphics getG() {
+		return g;
+	}
+
+	public void setG(Graphics g) {
+		this.g = g;
+	}
+	
+	
+	
 	
 
 
