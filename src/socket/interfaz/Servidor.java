@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ public class Servidor extends JFrame implements Runnable{
 	private JTextArea txtMensajes;
 	private JTextField txtMensaje;
 	private Socket cliente;
+	private ArrayList<Socket> listaClientes;
 
 	/**
 	 * Launch the application.
@@ -72,13 +74,18 @@ public class Servidor extends JFrame implements Runnable{
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					ObjectOutputStream output=new ObjectOutputStream(cliente.getOutputStream());
 					String name="Servidor";
 					String mensaje=txtMensaje.getText();
 					Persona p= new Persona(name, mensaje);
-					output.writeObject(p);
+					
+					for(Socket item:listaClientes){
+						ObjectOutputStream output=new ObjectOutputStream(item.getOutputStream());
+						output.writeObject(p);
+					}
+				
 					txtMensajes.append("\n Servidor: "+mensaje);
 					txtMensaje.setText("");
+					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -87,6 +94,7 @@ public class Servidor extends JFrame implements Runnable{
 		});
 		pnlMensajes.add(btnEnviar);
 
+		listaClientes=new ArrayList<Socket>();
 		Thread t=new Thread(this);
 		t.start();
 	}
@@ -109,7 +117,8 @@ public class Servidor extends JFrame implements Runnable{
 			while(true){
 				
 				cliente=servidor.accept();
-				ClienteHilo ch=new ClienteHilo(cliente, this);
+				listaClientes.add(cliente);
+				ClienteHilo ch=new ClienteHilo(cliente, this,listaClientes);
 				Thread t=new Thread(ch);
 				t.start();
 			}
