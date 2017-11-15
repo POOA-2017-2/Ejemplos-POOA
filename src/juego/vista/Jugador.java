@@ -28,8 +28,8 @@ public class Jugador {
 		dx=1;
 		dy=1;
 		imagen=Recursos.jugador;
-		jugadorIzquierda=new Animacion(500, Recursos.jugadorIzquierda);
-		jugadorDerecha=new Animacion(500, Recursos.jugadorDerecha);
+		jugadorIzquierda=new Animacion(100, Recursos.jugadorIzquierda);
+		jugadorDerecha=new Animacion(100, Recursos.jugadorDerecha);
 	}
 
 	public void update(){

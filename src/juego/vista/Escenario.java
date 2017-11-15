@@ -33,7 +33,7 @@ public class Escenario {
 			}
 		}
 		else if(game.getKm().isIzquierda()){
-			if(x>=5){
+			if(x<-5){
 				x++;
 			}
 			//System.out.println(x);
