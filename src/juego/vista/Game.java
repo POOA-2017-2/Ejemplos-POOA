@@ -31,12 +31,12 @@ public class Game implements Runnable{
 	}
 	
 	public void init(){
-		ventana=new Display(ancho, alto, titulo);
-		ventana.getCanvas().addKeyListener(km);
-		ventana.getCanvas().setFocusable(true);
 		Recursos.init();
+		ventana=new Display(ancho, alto, titulo);
 		escenario=new Escenario(this);
 		jugador=new Jugador(this,10,160);
+		ventana.getCanvas().addKeyListener(km);
+		ventana.getCanvas().setFocusable(true);
 	}
 
 	public synchronized void start(){
