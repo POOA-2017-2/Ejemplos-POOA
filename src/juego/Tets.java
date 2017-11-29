@@ -15,7 +15,7 @@ import juego.vista.Game;
 public class Tets {
 
 	public static void main(String args[]){
-		Game ventana=new Game(384, 225,"Hola");
+		Game ventana=new Game(384, 305,"Hola");
 		ventana.start();
 		
 		AudioManager manager=new AudioManager("/sonidos/sonido3.wav");

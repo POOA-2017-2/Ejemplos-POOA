@@ -16,11 +16,11 @@ public class Jugador {
 	private int dx;
 	private int dy;
 	private BufferedImage imagen;
-	private Game juego;
+	private Juego juego;
 	private Animacion jugadorIzquierda;
 	private Animacion jugadorDerecha;
 	
-	public Jugador(Game juego,int x, int y) {
+	public Jugador(Juego juego,int x, int y) {
 		super();
 		this.juego=juego;
 		this.x = x;
@@ -34,14 +34,14 @@ public class Jugador {
 
 	public void update(){
 		
-		if(juego.getKm().isDerecha()){
-			if(x<=juego.getAncho()-150){
+		if(juego.getPnlJuego().getKm().isDerecha()){
+			if(x<=juego.getJuego().getAncho()-150){
 				x+=dx;
 			}
 			jugadorIzquierda.stop();
 			jugadorDerecha.start();
 		}
-		else if(juego.getKm().isIzquierda()){
+		else if(juego.getPnlJuego().getKm().isIzquierda()){
 			if(x>=10){
 				x-=dx;
 			}
@@ -58,10 +58,10 @@ public class Jugador {
 	}
 	
 	public BufferedImage currentFrame(){
-		if(juego.getKm().isDerecha()){
+		if(juego.getPnlJuego().getKm().isDerecha()){
 			return jugadorDerecha.currentFrame();
 		}
-		else if(juego.getKm().isIzquierda()){
+		else if(juego.getPnlJuego().getKm().isIzquierda()){
 			return jugadorIzquierda.currentFrame();
 		}
 		else 

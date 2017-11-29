@@ -13,9 +13,9 @@ public class Escenario {
 	private BufferedImage piso;
 	private BufferedImage piso2;
 	private int x;
-	private Game game;
+	private Juego game;
 	
-	public Escenario(Game game) {
+	public Escenario(Juego game) {
 		// TODO Auto-generated constructor stub
 		this.game=game;
 		fondo=Recursos.fondo;
@@ -25,14 +25,14 @@ public class Escenario {
 	}
 	
 	public void update(){
-		if(game.getKm().isDerecha()){
+		if(game.getPnlJuego().getKm().isDerecha()){
 			x--;
 			//System.out.println(x);
 			if(x<=-piso.getWidth()){
 				x=0;
 			}
 		}
-		else if(game.getKm().isIzquierda()){
+		else if(game.getPnlJuego().getKm().isIzquierda()){
 			if(x<-5){
 				x++;
 			}

@@ -4,8 +4,10 @@ package juego.vista;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import juego.manager.Estado;
 import juego.manager.KeyManager;
 import juego.manager.Recursos;
+import juego.manager.StateManager;
 
 public class Game implements Runnable{
 
@@ -15,28 +17,22 @@ public class Game implements Runnable{
 	private String titulo;
 	private boolean activo;
 	private Thread t;
-	private BufferStrategy bs;
 	private Graphics g;
-	private KeyManager km;
-	private Escenario escenario;
-	private Jugador jugador;
-	
+
 	public Game(int ancho, int alto, String titulo) {
 		super();
 		this.ancho = ancho;
 		this.alto = alto;
 		this.titulo = titulo;
-		km=new KeyManager();
-		//init();
 	}
 	
 	public void init(){
-		Recursos.init();
 		ventana=new Display(ancho, alto, titulo);
-		escenario=new Escenario(this);
-		jugador=new Jugador(this,10,160);
-		ventana.getCanvas().addKeyListener(km);
-		ventana.getCanvas().setFocusable(true);
+		Juego j=new Juego(this);
+		
+		//ventana.getPnlVista().add(j.getPnlJuego(),"Juego");
+		StateManager.getInstance().addEstado(j);
+		
 	}
 
 	public synchronized void start(){
@@ -61,25 +57,13 @@ public class Game implements Runnable{
 	}
 	
 	public void update(){
-		escenario.update();
-		jugador.update();
+	   if(StateManager.getInstance()!=null)
+		   StateManager.getInstance().getCurrentEstado().update();
 	}
 	
 	public void render(){
-		bs=ventana.getCanvas().getBufferStrategy();
-		if(bs==null){
-			ventana.getCanvas().createBufferStrategy(3);
-			return;
-		}
-		
-		g=bs.getDrawGraphics();
-		g.clearRect(0, 0, ancho, alto);
-		// PINTAR ELEMENTOS
-		escenario.render(g);
-		jugador.render(g);
-		// FIN DEL PINTADO
-		bs.show();
-		g.dispose();
+		if(StateManager.getInstance()!=null)
+			StateManager.getInstance().getCurrentEstado().render(g);
 	}
 	
 	@Override
@@ -121,13 +105,6 @@ public class Game implements Runnable{
 	}
 
 	
-	public Escenario getEscenario() {
-		return escenario;
-	}
-
-	public void setEscenario(Escenario escenario) {
-		this.escenario = escenario;
-	}
 
 	public int getAncho() {
 		return ancho;
@@ -153,13 +130,10 @@ public class Game implements Runnable{
 		this.g = g;
 	}
 
-	public KeyManager getKm() {
-		return km;
+	public Display getVentana() {
+		return ventana;
 	}
 	
 	
-	
-	
-
 
 }
