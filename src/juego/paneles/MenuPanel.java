@@ -6,7 +6,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import juego.botones.MiBoton;
+import juego.manager.StateManager;
+import juego.vista.EstadoJuego;
 import juego.vista.Game;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuPanel extends JPanel {
 
@@ -26,6 +30,11 @@ public class MenuPanel extends JPanel {
 		
 		
 		btnNew = new MiBoton(juego,"New");
+		btnNew.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				StateManager.getInstance().setCurrentEstado(EstadoJuego.OPCIONES);
+			}
+		});
 		btnNew.setBounds(6, 64, 117, 29);
 		add(btnNew);
 

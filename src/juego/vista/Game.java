@@ -28,9 +28,12 @@ public class Game implements Runnable{
 	
 	public void init(){
 		ventana=new Display(ancho, alto, titulo);
+		
+		Menu m=new Menu(this);
 		Juego j=new Juego(this);
 		
 		//ventana.getPnlVista().add(j.getPnlJuego(),"Juego");
+		StateManager.getInstance().addEstado(m);
 		StateManager.getInstance().addEstado(j);
 		
 	}

@@ -37,7 +37,7 @@ public class Display extends JFrame{
 		
 		pnlVista=new JPanel();
 		pnlVista.setLayout(new CardLayout(0,0));
-		getContentPane().add(pnlVista, BorderLayout.NORTH); // <---- ME FALTO
+		getContentPane().add(pnlVista, BorderLayout.CENTER); // <---- ME FALTO
 		
 		
 		//pack(); //<--- AJUSTA TAMANO DE LA PANTALLA, PARA QUE TODOS LOS ELEMENTOS SEAN VISIBLES. 

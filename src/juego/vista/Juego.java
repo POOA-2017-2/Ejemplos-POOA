@@ -28,8 +28,6 @@ public class Juego extends Estado {
 		pnlJuego=new GamePanel();
 		juego.getVentana().getPnlVista().add(pnlJuego,"Juego");// < ---- agregue aqui
 		
-		
-		
 		escenario=new Escenario(this);
 		jugador=new Jugador(this,10,160);
 		
