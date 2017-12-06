@@ -8,11 +8,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import juego.manager.KeyManager;
+import juego.manager.MouseManager;
 
 public class GamePanel extends JPanel{
 
 	private Canvas canvas;
 	private KeyManager km;
+	private MouseManager mouse;
 	
 	public GamePanel() {
 		// TODO Auto-generated constructor stub
@@ -29,12 +31,23 @@ public class GamePanel extends JPanel{
 		
 		JPanel panelBotones=new JPanel(); //<-- PANEL PARA INCLUIR BOTONES/
 		
+		mouse=new MouseManager();
+		
 		JButton btnLeft =new JButton("<---");
+		btnLeft.setActionCommand("left");
+		btnLeft.addMouseListener(mouse);
 		panelBotones.add(btnLeft);
 		
 		
 		JButton btnRight=new JButton("-->");
+		btnRight.setActionCommand("right");
+		btnRight.addMouseListener(mouse);
 		panelBotones.add(btnRight);
+		
+		JButton btnFire=new JButton("FIRE");
+		btnFire.setActionCommand("fire");
+		btnFire.addMouseListener(mouse);
+		panelBotones.add(btnFire);
 		
 		
 		add(panelBotones,BorderLayout.SOUTH); //<--- AGREGAMOS AL SUR DEL CONTENTPANE EL PANEL QUE CONTIENE BOTONES
@@ -61,6 +74,12 @@ public class GamePanel extends JPanel{
 	public KeyManager getKm() {
 		return km;
 	}
+
+	public MouseManager getMouse() {
+		return mouse;
+	}
+	
+	
 	
 	
 }

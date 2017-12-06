@@ -35,14 +35,14 @@ public class Jugador {
 
 	public void update(){
 		
-		if(juego.getPnlJuego().getKm().isDerecha()){
+		if(juego.getPnlJuego().getKm().isDerecha() || juego.getPnlJuego().getMouse().isRight()){
 			if(x<=juego.getJuego().getAncho()-150){
 				x+=dx;
 			}
 			jugadorIzquierda.stop();
 			jugadorDerecha.start();
 		}
-		else if(juego.getPnlJuego().getKm().isIzquierda()){
+		else if(juego.getPnlJuego().getKm().isIzquierda() || juego.getPnlJuego().getMouse().isLeft()){
 			if(x>=10){
 				x-=dx;
 			}
@@ -50,7 +50,7 @@ public class Jugador {
 			jugadorIzquierda.start();
 		}
 		
-		if(juego.getPnlJuego().getKm().isDisparo()){
+		if(juego.getPnlJuego().getKm().isDisparo() || juego.getPnlJuego().getMouse().isFire()){
 			String direccion="right";
 			int xBala=x+imagen.getWidth()+2; // COORDENADA X DE LA BALA
 		    int yBala=y+10; // COORDENADA Y DE LA BALA
@@ -60,6 +60,7 @@ public class Jugador {
 			}
 			listaBalas.add(new Bala(xBala, yBala,direccion));
 			juego.getPnlJuego().getKm().setDisparo(false);
+			juego.getPnlJuego().getMouse().setFire(false);
 		}
 		
 		for(int i=0;i<listaBalas.size();i++){ // RECORREMOS LAS BALAS EXISTENTES
@@ -110,10 +111,10 @@ public class Jugador {
 	}
 	
 	public BufferedImage currentFrame(){
-		if(juego.getPnlJuego().getKm().isDerecha()){
+		if(juego.getPnlJuego().getKm().isDerecha() || juego.getPnlJuego().getMouse().isRight()){
 			return jugadorDerecha.currentFrame();
 		}
-		else if(juego.getPnlJuego().getKm().isIzquierda()){
+		else if(juego.getPnlJuego().getKm().isIzquierda() || juego.getPnlJuego().getMouse().isLeft()){
 			return jugadorIzquierda.currentFrame();
 		}
 		else 
