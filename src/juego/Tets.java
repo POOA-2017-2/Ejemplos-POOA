@@ -1,5 +1,6 @@
 package juego;
 
+import java.awt.EventQueue;
 import java.io.IOException;
 
 import javax.sound.sampled.AudioSystem;
@@ -15,11 +16,18 @@ import juego.vista.Game;
 public class Tets {
 
 	public static void main(String args[]){
-		Game ventana=new Game(384, 305,"Hola");
-		ventana.start();
 		
-		AudioManager manager=new AudioManager("/sonidos/sonido3.wav");
-		manager.loop();
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				Game ventana=new Game(384, 305,"Hola");
+				ventana.start();
+				AudioManager manager=new AudioManager("/sonidos/sonido3.wav");
+				manager.loop();
+				
+			}
+		});
+
 		
 		/*
 		try {

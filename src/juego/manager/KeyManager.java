@@ -30,6 +30,11 @@ public class KeyManager extends KeyAdapter{
 		return disparo;
 	}
 
+	
+	public void setDisparo(boolean disparo) {
+		this.disparo = disparo;
+	}
+
 	public void update(){
 		izquierda=keys[KeyEvent.VK_LEFT];
 		derecha=keys[KeyEvent.VK_RIGHT];

@@ -118,6 +118,16 @@ public class Juego extends Estado {
 		return juego;
 	}
 
+	public ArrayList<Enemigo> getListaEnemigos() {
+		return listaEnemigos;
+	}
+
+	public void setListaEnemigos(ArrayList<Enemigo> listaEnemigos) {
+		this.listaEnemigos = listaEnemigos;
+	}
+	
+	
+
 	
 	
 }
