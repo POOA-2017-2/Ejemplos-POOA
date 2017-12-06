@@ -1,12 +1,11 @@
 package juego.vista;
 
 import java.awt.Graphics;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import juego.manager.Animacion;
-import juego.manager.ImageManager;
 import juego.manager.Recursos;
 
 public class Jugador {
@@ -15,6 +14,7 @@ public class Jugador {
 	private int y;
 	private int dx;
 	private int dy;
+	private ArrayList<Bala> listaBalas;
 	private BufferedImage imagen;
 	private Juego juego;
 	private Animacion jugadorIzquierda;
@@ -30,6 +30,7 @@ public class Jugador {
 		imagen=Recursos.jugador;
 		jugadorIzquierda=new Animacion(100, Recursos.jugadorIzquierda);
 		jugadorDerecha=new Animacion(100, Recursos.jugadorDerecha);
+		listaBalas=new ArrayList<Bala>();
 	}
 
 	public void update(){
@@ -49,11 +50,26 @@ public class Jugador {
 			jugadorIzquierda.start();
 		}
 		
+		if(juego.getPnlJuego().getKm().isDisparo()){
+			String direccion="right";
+			if(juego.getPnlJuego().getKm().isIzquierda()){
+				direccion="left";
+			}
+			listaBalas.add(new Bala(x+imagen.getWidth()+2, y+10,direccion));
+		}
+		
+		for(int i=0;i<listaBalas.size();i++){
+			listaBalas.get(i).update();
+		}
+		
 	}
 	
 
 	public void render(Graphics g){
 		g.drawImage(currentFrame(), x, y, null);
+		for(int i=0;i<listaBalas.size();i++){
+			listaBalas.get(i).render(g);
+		}
 		//g.dispose();
 	}
 	
@@ -66,5 +82,25 @@ public class Jugador {
 		}
 		else 
 			return Recursos.jugador;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	public Rectangle getBounds(){
+		return new Rectangle(x,y,imagen.getWidth(), imagen.getHeight());
 	}
 }

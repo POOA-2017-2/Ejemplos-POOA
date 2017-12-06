@@ -32,7 +32,7 @@ public class MenuPanel extends JPanel {
 		btnNew = new MiBoton(juego,"New");
 		btnNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StateManager.getInstance().setCurrentEstado(EstadoJuego.OPCIONES);
+				StateManager.getInstance().setCurrentEstado(EstadoJuego.JUEGO);
 			}
 		});
 		btnNew.setBounds(6, 64, 117, 29);

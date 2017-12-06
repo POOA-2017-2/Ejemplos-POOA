@@ -9,11 +9,13 @@ public class Recursos {
 	public static BufferedImage jugador;
 	public static BufferedImage[] jugadorIzquierda;
 	public static BufferedImage[] jugadorDerecha;
+	public static BufferedImage enemigo;
 	
 	
 	public static void init(){
 		fondo=ImageManager.cargaImagen("/img/country-platform-back.png");
 		piso=ImageManager.cargaImagen("/img/country-platform-tiles-example.png");
+		enemigo=ImageManager.cargaImagen("/img/hucha.png");
 		
 		SpriteManager sm=new SpriteManager("/img/test.png");
 		jugador=sm.subImagen(0, 0, 32, 32);

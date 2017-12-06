@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 public class KeyManager extends KeyAdapter{
 
 	private boolean[] keys;
-	private boolean izquierda, derecha;
+	private boolean izquierda, derecha, disparo;
 	
 	public KeyManager() {
 		keys=new boolean[256];
@@ -23,10 +23,17 @@ public class KeyManager extends KeyAdapter{
 	public boolean isDerecha() {
 		return derecha;
 	}
+	
+	
+
+	public boolean isDisparo() {
+		return disparo;
+	}
 
 	public void update(){
 		izquierda=keys[KeyEvent.VK_LEFT];
 		derecha=keys[KeyEvent.VK_RIGHT];
+		disparo=keys[KeyEvent.VK_A];
 	}
 
 	public void keyPressed(KeyEvent e){

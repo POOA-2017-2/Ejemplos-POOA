@@ -2,7 +2,12 @@ package juego.vista;
 
 import java.awt.CardLayout;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
+
+import javax.swing.Timer;
 
 import juego.manager.Estado;
 import juego.manager.Recursos;
@@ -13,8 +18,10 @@ public class Juego extends Estado {
 	private GamePanel pnlJuego;
 	private Escenario escenario;
 	private Jugador jugador;
+	private ArrayList<Enemigo> listaEnemigos;
 	private Game juego;
 	private BufferStrategy bs;
+	private Timer t;
 	
 	public Juego(Game juego) {
 		super(EstadoJuego.JUEGO);
@@ -30,6 +37,18 @@ public class Juego extends Estado {
 		
 		escenario=new Escenario(this);
 		jugador=new Jugador(this,10,160);
+		listaEnemigos=new ArrayList<Enemigo>();
+		listaEnemigos.add(new Enemigo(250, 160));
+		listaEnemigos.add(new Enemigo(300, 160));
+		listaEnemigos.add(new Enemigo(350, 160));
+		
+		t=new Timer(1000, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listaEnemigos.add(new Enemigo(300, 160));
+			}
+		});
+		
+		t.start();
 		
 	}
 
@@ -46,6 +65,9 @@ public class Juego extends Estado {
 		// PINTAR ELEMENTOS
 		escenario.render(g);
 		jugador.render(g);
+		for(int i=0; i<listaEnemigos.size();i++){
+			listaEnemigos.get(i).render(g);
+		}
 		// FIN DEL PINTADO
 		bs.show();
 		g.dispose();
@@ -56,6 +78,14 @@ public class Juego extends Estado {
 	public void update() {
 		escenario.update();
 		jugador.update();
+		for(int i=0; i<listaEnemigos.size();i++){
+			Enemigo e=listaEnemigos.get(i);
+			e.update();
+			if(jugador.getBounds().intersects(e.getBounds())){
+				listaEnemigos.remove(i);
+			}
+			
+		}
 		
 	}
 
