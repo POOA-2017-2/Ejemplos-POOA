@@ -3,7 +3,8 @@ package juego.manager;
 import java.util.HashMap;
 import java.util.Map;
 
-import juego.vista.EstadoJuego;
+import juego.estados.Estado;
+import juego.estados.EstadoJuego;
 
 public class StateManager {
 

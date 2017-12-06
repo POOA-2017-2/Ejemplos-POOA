@@ -5,10 +5,11 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import juego.Game;
 import juego.botones.MiBoton;
+import juego.estados.EstadoJuego;
 import juego.manager.StateManager;
-import juego.vista.EstadoJuego;
-import juego.vista.Game;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 

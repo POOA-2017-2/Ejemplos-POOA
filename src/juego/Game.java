@@ -1,10 +1,13 @@
-package juego.vista;
+package juego;
 
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-import juego.manager.Estado;
+import juego.elementos.Display;
+import juego.estados.Estado;
+import juego.estados.Juego;
+import juego.estados.Menu;
 import juego.manager.KeyManager;
 import juego.manager.Recursos;
 import juego.manager.StateManager;

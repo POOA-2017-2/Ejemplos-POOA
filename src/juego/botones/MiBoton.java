@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
 
-import juego.vista.Game;
+import juego.Game;
 
 public class MiBoton extends JButton{
 

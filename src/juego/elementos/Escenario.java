@@ -1,9 +1,10 @@
-package juego.vista;
+package juego.elementos;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
+import juego.estados.Juego;
 import juego.manager.ImageManager;
 import juego.manager.Recursos;
 

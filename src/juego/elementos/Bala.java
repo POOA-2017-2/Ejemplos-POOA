@@ -1,4 +1,4 @@
-package juego.vista;
+package juego.elementos;
 
 import java.awt.Color;
 import java.awt.Graphics;

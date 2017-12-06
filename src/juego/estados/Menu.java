@@ -1,9 +1,9 @@
-package juego.vista;
+package juego.estados;
 
 import java.awt.CardLayout;
 import java.awt.Graphics;
 
-import juego.manager.Estado;
+import juego.Game;
 import juego.paneles.MenuPanel;
 
 public class Menu extends Estado{

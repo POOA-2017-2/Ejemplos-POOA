@@ -11,7 +11,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import org.newdawn.easyogg.OggClip;
 
 import juego.manager.AudioManager;
-import juego.vista.Game;
 
 public class Tets {
 

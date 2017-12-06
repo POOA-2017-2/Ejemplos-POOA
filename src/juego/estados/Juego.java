@@ -1,4 +1,4 @@
-package juego.vista;
+package juego.estados;
 
 import java.awt.CardLayout;
 import java.awt.Graphics;
@@ -9,7 +9,10 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
-import juego.manager.Estado;
+import juego.Game;
+import juego.elementos.Enemigo;
+import juego.elementos.Escenario;
+import juego.elementos.Jugador;
 import juego.manager.Recursos;
 import juego.paneles.GamePanel;
 

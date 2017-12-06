@@ -1,8 +1,6 @@
-package juego.manager;
+package juego.estados;
 
 import java.awt.Graphics;
-
-import juego.vista.EstadoJuego;
 
 public abstract class Estado {
 	

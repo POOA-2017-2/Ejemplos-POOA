@@ -1,10 +1,11 @@
-package juego.vista;
+package juego.elementos;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import juego.estados.Juego;
 import juego.manager.Animacion;
 import juego.manager.Recursos;
 
