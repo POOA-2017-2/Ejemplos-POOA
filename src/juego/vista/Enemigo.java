@@ -22,10 +22,12 @@ public class Enemigo {
 	}
 
 	public void update(){
+		// INCREMENTAMOS LA COORDENADA X DEL ENEMIGO, ENEMIGO TIENE UN COMPORTAMIENTO "TONTO".
 		x-=dx;
 	}
 	
 	public void render(Graphics g){
+		// DIBUJAMOS AL ENEMIGO
 		g.drawImage(imagen,x,y,null);
 	}
 
@@ -45,7 +47,7 @@ public class Enemigo {
 		this.y = y;
 	}
 	
-	
+	// METODO PARA RETORNAR UN RECTANGULO CON LAS DIMENSIONES DEL ENEMIGO, PARA LAS COLISIONES.
 	public Rectangle getBounds(){
 		return new Rectangle(x,y,imagen.getWidth(), imagen.getHeight());
 	}

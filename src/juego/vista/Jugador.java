@@ -35,21 +35,23 @@ public class Jugador {
 
 	public void update(){
 		
+		// CHECA SI EL JUGADOR SE DESPLAZA A LA DERECHA
 		if(juego.getPnlJuego().getKm().isDerecha() || juego.getPnlJuego().getMouse().isRight()){
-			if(x<=juego.getJuego().getAncho()-150){
-				x+=dx;
+			if(x<=juego.getJuego().getAncho()-150){ // CHECAMOS QUE LA COORDENADA X NO SE SALGA DEL LIMITE
+				x+=dx; // INCREMENTAMOS LA COORDENADA X
 			}
-			jugadorIzquierda.stop();
-			jugadorDerecha.start();
+			jugadorIzquierda.stop(); // DETENEMOS ANIMACION DE JUGADOR IZQUIERDA
+			jugadorDerecha.start(); // INICIAMOS ANIMACION DE JUGADOR DERECHA
 		}
-		else if(juego.getPnlJuego().getKm().isIzquierda() || juego.getPnlJuego().getMouse().isLeft()){
+		// CHECA SI EL JUGADOR SE DESPLAZA A LA IZQUIERDA
+		else if(juego.getPnlJuego().getKm().isIzquierda() || juego.getPnlJuego().getMouse().isLeft()){ // CHECAMOS QUE LA COORDENADA X NO SE SALGA DEL LIMITE.
 			if(x>=10){
-				x-=dx;
+				x-=dx; // DECREMENTAMOS LA COORDENADA X
 			}
-			jugadorDerecha.stop();
-			jugadorIzquierda.start();
+			jugadorDerecha.stop(); // DETENEMOS ANIMACION DE JUGADOR DERECHA.
+			jugadorIzquierda.start(); // INICIAMOS ANIMACION DE JUGADOR IZQUIERDA.
 		}
-		
+		// CHECA SI EL JUGADOR DISPARA
 		if(juego.getPnlJuego().getKm().isDisparo() || juego.getPnlJuego().getMouse().isFire()){
 			String direccion="right";
 			int xBala=x+imagen.getWidth()+2; // COORDENADA X DE LA BALA
@@ -58,9 +60,9 @@ public class Jugador {
 				direccion="left";
 				xBala=x-2; // COORDENADA X DE LA BALA SI ES POR EL LADO IZQUIERDO
 			}
-			listaBalas.add(new Bala(xBala, yBala,direccion));
-			juego.getPnlJuego().getKm().setDisparo(false);
-			juego.getPnlJuego().getMouse().setFire(false);
+			listaBalas.add(new Bala(xBala, yBala,direccion)); // AGREGAMOS LA NUEVA BALA A LA LISTA DE BALAS EXISTENTES.
+			juego.getPnlJuego().getKm().setDisparo(false); // PONEMOS A DISPARO EN FALSE DEL KEYMANAGER PARA QUE NO SIGA DISPARANDO
+			juego.getPnlJuego().getMouse().setFire(false); // PONEMOS A DISPARO EN FALSE DEL MOUSEMANAGER PARA QUE NO SIGA DISPARANDO
 		}
 		
 		for(int i=0;i<listaBalas.size();i++){ // RECORREMOS LAS BALAS EXISTENTES
@@ -94,6 +96,7 @@ public class Jugador {
 				if (item.getBounds().intersects(enemigo.getBounds())){  // CHECAMOS SI EL ENEMIGO CHOCA CON NUESTRA BALA
 					 juego.getListaEnemigos().remove(enemigo); // SI CHOCA REMOVEMOS AL ENEMIGO
 					 listaBalas.remove(item); // SI CHOCA REMOVEMOS LA BALA
+					 break; // SALIMOS DEL FOR QUE RECORRE LOS ENEMIGOS.
 				}
 				
 			}
@@ -103,7 +106,11 @@ public class Jugador {
 	
 
 	public void render(Graphics g){
+		
+		// DIBUJAMOS AL JUGADOR CON EL FRAME ACTUAL (IMAGEN ACTUAL)
 		g.drawImage(currentFrame(), x, y, null);
+		
+		// DIBUJAMOS LAS BALAS
 		for(int i=0;i<listaBalas.size();i++){
 			listaBalas.get(i).render(g);
 		}
@@ -111,12 +118,16 @@ public class Jugador {
 	}
 	
 	public BufferedImage currentFrame(){
+		
+		// SI EL JUGADOR SE DESPLAZA A LA DERECHA, OBTENEMOS LA IMAGEN ACTUAL DE LA ANIMACION DEL JUGADOR DERECHA.
 		if(juego.getPnlJuego().getKm().isDerecha() || juego.getPnlJuego().getMouse().isRight()){
 			return jugadorDerecha.currentFrame();
 		}
+		// SI EL JUGADOR SE DESPLAZA A LA  IZQUIERDA, OBTENEMOS LA IMAGEN ACTUAL DE LA ANIMACION DEL JUGADOR IZQUIERDA.
 		else if(juego.getPnlJuego().getKm().isIzquierda() || juego.getPnlJuego().getMouse().isLeft()){
 			return jugadorIzquierda.currentFrame();
 		}
+		// SI NO TIENE MOVIMIENTO, CARGAMOS UNA IMAGEN DEFAULT. PODRIA CAMBIARSE A UNA ANIMACION DEFAULT. 
 		else 
 			return Recursos.jugador;
 	}
@@ -137,6 +148,7 @@ public class Jugador {
 		this.y = y;
 	}
 	
+	// METODO PARA RETORNAR UN RECTANGULO CON LAS DIMENSIONES DEL JUGADOR, PARA LAS COLISIONES.
 	public Rectangle getBounds(){
 		return new Rectangle(x,y,imagen.getWidth(), imagen.getHeight());
 	}

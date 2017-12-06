@@ -24,14 +24,18 @@ public class Bala {
 
 
 	public void update(){
+		// SI LA BALA TIENE UNA DIRECCION A LA DERECHA INCREMENTAMOS SU COORDENADA X.
 		if(direccion.equals("right"))
 			x+=dx;
+		// SI LA BALA TIENE UNA DIRECCION A LA IZQUIERDA INCREMENTAMOS SU COORDENADA Y.
 		else if(direccion.equals("left"))
 			x-=dx;
 	}
 	
 	public void render(Graphics g){
+		// PONEMOS UN PINCEL DE COLOR ROJO OBSCURO.
 		g.setColor(Color.red.darker());
+		// DIBUJAMOS UN RECTANGULO PARA LA FIGURA DE LA BALA.
 		g.fillRect(x, y, 2, 2);
 	}
 
@@ -51,7 +55,7 @@ public class Bala {
 		this.y = y;
 	}
 	
-	
+	// METODO PARA RETORNAR UN RECTANGULO CON LAS DIMENSIONES DE LA BALA, PARA LAS COLISIONES.
 	public Rectangle getBounds(){
 		return new Rectangle(x,y,2,2);
 	}
