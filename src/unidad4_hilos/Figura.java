@@ -1,4 +1,4 @@
-package hilos;
+package unidad4_hilos;
 
 import java.awt.Color;
 import java.awt.Component;

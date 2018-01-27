@@ -1,4 +1,4 @@
-package serializacion;
+package unidad3_serializacion;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

@@ -1,4 +1,4 @@
-package serializacion;
+package unidad3_serializacion;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

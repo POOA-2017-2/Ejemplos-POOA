@@ -1,4 +1,4 @@
-package socket.controlador;
+package unidad5_socket.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,8 +8,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import socket.interfaz.Cliente;
-import socket.modelo.Persona;
+import unidad5_socket.interfaz.Cliente;
+import unidad5_socket.modelo.Persona;
 
 public class ClienteControlador implements ActionListener{
 

@@ -1,4 +1,4 @@
-package interfaces;
+package unidad2_interfaces;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

@@ -1,4 +1,4 @@
-package socket.interfaz;
+package unidad5_socket.interfaz;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import socket.controlador.ClienteControlador;
-import socket.modelo.Persona;
+import unidad5_socket.controlador.ClienteControlador;
+import unidad5_socket.modelo.Persona;
 
 import javax.swing.JTextArea;
 import javax.swing.JLabel;

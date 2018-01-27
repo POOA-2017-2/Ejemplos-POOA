@@ -1,12 +1,12 @@
-package socket.controlador;
+package unidad5_socket.controlador;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import socket.interfaz.Servidor;
-import socket.modelo.Persona;
+import unidad5_socket.interfaz.Servidor;
+import unidad5_socket.modelo.Persona;
 
 public class ClienteHilo implements Runnable {
 

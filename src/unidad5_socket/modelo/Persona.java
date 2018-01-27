@@ -1,4 +1,4 @@
-package socket.modelo;
+package unidad5_socket.modelo;
 
 import java.io.Serializable;
 

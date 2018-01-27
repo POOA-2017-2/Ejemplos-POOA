@@ -1,4 +1,4 @@
-package hilos;
+package unidad4_hilos;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

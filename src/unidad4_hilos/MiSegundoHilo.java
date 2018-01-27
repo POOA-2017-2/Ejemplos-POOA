@@ -1,4 +1,4 @@
-package hilos;
+package unidad4_hilos;
 
 public class MiSegundoHilo implements Runnable {
 	private String name;

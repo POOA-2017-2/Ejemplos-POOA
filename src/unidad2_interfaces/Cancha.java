@@ -1,4 +1,4 @@
-package interfaces;
+package unidad2_interfaces;
 
 import java.awt.Color;
 import java.awt.FontMetrics;
