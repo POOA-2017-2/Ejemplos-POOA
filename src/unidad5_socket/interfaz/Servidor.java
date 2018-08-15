@@ -113,7 +113,6 @@ public class Servidor extends JFrame implements Runnable{
 		try {
 			
 			ServerSocket servidor=new ServerSocket(8000);
-			
 			while(true){
 				
 				cliente=servidor.accept();
